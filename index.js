@@ -53,11 +53,23 @@ async function run(){
             res.send(result);
         });
 
-        app.get('/users/userinfo', async(req, res) => {
+        app.get('/users/user', async(req, res) => {
             const email = req.query.email;
             const query = {email: email};
             const user = await usersCollection.findOne(query);
             res.send(user)
+        })
+        app.get('/users/sellers', async(req, res) => {
+            const role = "seller";
+            const query = {role: role};
+            const seller = await usersCollection.find(query).toArray();
+            res.send(seller)
+        })
+        app.get('/users/buyers', async(req, res) => {
+            const role = "buyers";
+            const query = {role: role};
+            const seller = await usersCollection.find(query).toArray();
+            res.send(seller)
         })
     } 
     finally{

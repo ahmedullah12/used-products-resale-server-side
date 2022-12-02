@@ -40,7 +40,11 @@ async function run(){
             const categories = await categoriesCollection.find(query).toArray();
             res.send(categories);
         });
-        
+        app.get('/products', async(req, res) => {
+            const query = {};
+            const products = await productsCollection.find(query).toArray();
+            res.send(products);
+        })
     } 
     finally{
 
